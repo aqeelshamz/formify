@@ -8,7 +8,7 @@ import { alchemyProvider } from "wagmi/providers/alchemy";
 import { publicProvider } from "wagmi/providers/public";
 import "@rainbow-me/rainbowkit/styles.css";
 
-import { jsonRpcProvider } from 'wagmi/providers/jsonRpc'
+import { jsonRpcProvider } from "wagmi/providers/jsonRpc";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -22,7 +22,7 @@ export default function RootLayout({ children }) {
 					http: `https://testnet.mirrornode.hedera.com/`,
 				}),
 			}),
-		],
+		]
 	);
 
 	var wagmiConfig;
@@ -49,9 +49,10 @@ export default function RootLayout({ children }) {
 				<link rel="icon" href="/form.png" type="image/png" sizes="any" />
 			</head>
 			<body className={inter.className}>
+				
 				<WagmiConfig config={wagmiConfig} className="sticky top-0 z-50">
 					<RainbowKitProvider chains={chains}>{children}</RainbowKitProvider>
-				</WagmiConfig >
+				</WagmiConfig>
 			</body>
 		</html>
 	);

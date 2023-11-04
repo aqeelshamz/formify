@@ -15,8 +15,8 @@ export default function Home() {
 	}, []);
 
 	return (
-		<main className="relative flex justify-start items-center h-[100vh] overflow-hidden bg-gradient-to-tl  from-blue-500 to-blue-100">
-			<div>
+		<main className="relative flex justify-start items-center h-[100vh] overflow-hidden bg-gradient-to-tr from-blue-100  to-blue-100">
+			<div className="backdrop-filter backdrop-blur-lg">
 				<div className="flex">
 					<h1 className="ml-20 relative text-black text-8xl font-bold">Formify</h1>
 					<div className="bg-black p-5 ml-5 rounded-3xl">
@@ -28,7 +28,7 @@ export default function Home() {
 					<div className="ml-20 mt-10">
 						{address ? (
 							<button
-								className="btn bg-black text-white text-xl hover:border-black hover:glass hover:text-black border-black"
+								className="btn bg-black text-white text-xl hover:border-black hover:bg-opacity-0 hover:text-black border-black"
 								onClick={() => router.push("/home")}
 							>
 								Get Started

@@ -244,8 +244,8 @@ export default function Form({ params: { formId } }) {
                           pay(field?.amount, field?.id);
                         }}
                       >
-                        <FiCreditCard /> Pay {field?.amount} MATIC
-                      </button> : <p className="font-semibold text-md ml-2">✅ Paid {field?.amount} MATIC</p>
+                        <FiCreditCard /> Pay {field?.amount} HBR
+                      </button> : <p className="font-semibold text-md ml-2">✅ Paid {field?.amount} HBR</p>
                     ) : field?.type === "file" ? (answers[field?.id]) ? <p className="font-semibold text-md ml-2">✅ File uploaded: <Link className="underline text-blue-500" href={answers[field?.id]} target="_blank">{answers[field?.id]}</Link></p> : (
                       uploadingFile ? <div className="flex items-center">
                         <span className="loading loading-spinner loading-md"></span>

@@ -15,7 +15,7 @@ export default function Home() {
 	}, []);
 
 	return (
-		<main className="relative flex justify-start items-center h-[100vh] overflow-hidden bg-gradient-to-tr from-blue-100  to-blue-100">
+		<main className="relative flex justify-start items-center h-[100vh] overflow-hidden bg-gradient-to-tr from-blue-200  to-blue-100">
 			<div className="backdrop-filter backdrop-blur-lg">
 				<div className="flex">
 					<h1 className="ml-20 relative text-black text-8xl font-bold">Formify</h1>

@@ -99,33 +99,19 @@ export default function Home({ params: { formId } }) {
 	return (
 		<>
 			<Navbar />
-			<div className="flex justify-between tabs mt-3 sticky top-0 z-50 border-b bg-white">
-				<div>
-					<a className="tab tab-lg tab-lifted tab-active">Editor</a>
-					<Link href={"/responses/" + formId} className="tab tab-lg tab-lifted">
-						Responses
-					</Link>
+			<div className="flex justify-between p-5">
+				<div className="join">
+					<button className="join-item btn btn-primary btn-lg">Editor</button>
+					<Link href={"/responses/" + formId}><button className="join-item btn btn-lg">Responses</button></Link>
 				</div>
-				<div className="flex items-center bg-sky-500 p-1 mb-3 px-5 rounded-full">
-					<p
-						className="cursor-pointer underline text-white"
-						onClick={() => window.open("http://localhost:3000/forms/" + formId)}
-					>
-						https://formi.fi/forms/{formId}
-					</p>
-					<button
-						className="ml-2 btn btn-xs bg-sky-300"
-						onClick={() => {
-							navigator.clipboard.writeText(`http://localhost:3000/forms/${formId}`);
-							toast.success("Copied to clipboard!");
-						}}
-					>
-						<FiCopy />
-					</button>
+				<div className="items-center flex p-2 bg-gray-200 rounded-xl">
+					<p className="cursor-pointer underline text-lg px-3" onClick={() => window.open("http://localhost:3000/forms/" + formId)}>https://formify.io/forms/3145267819</p>
+					<button className="ml-2 btn btn-square btn-primary" onClick={() => {
+						navigator.clipboard.writeText(`http://localhost:3000/forms/${formId}`);
+						toast.success("Copied to clipboard!");
+					}}><FiCopy /></button>
 				</div>
-				<button className="m-5 mr-10 btn btn-primary" onClick={saveForm}>
-					Save
-				</button>
+				<button className="btn btn-primary btn-lg" onClick={saveForm}>Save</button>
 			</div>
 			<main className="container mx-auto relative mt-6 ">
 				{loadingFormData ? (
@@ -189,7 +175,7 @@ export default function Home({ params: { formId } }) {
 												{field?.type === "multiplechoice" ? (
 													<select
 														className="w-full max-w-4xl select select-bordered"
-														onChange={(e) => {}}
+														onChange={(e) => { }}
 													>
 														{field?.choices?.map((option, id) => {
 															return <option key={id}>{option}</option>;

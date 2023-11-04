@@ -5,7 +5,7 @@ import { PiMagicWandFill } from "react-icons/pi";
 import { CiCirclePlus } from "react-icons/ci";
 import { useEffect, useState } from "react";
 import OpenAI from "openai";
-import { formGenerationPrompt } from "../../utils/util";
+import { bgColors, formGenerationPrompt } from "../../utils/util";
 import { v4 as uuidv4 } from "uuid";
 import WeaveDB from "weavedb-sdk";
 import { ToastContainer, toast } from "react-toastify";
@@ -181,8 +181,8 @@ export default function Home() {
 							</div>
 							{
 								forms?.map((form) => {
-									return <div className="hover:shadow-2xl duration-100 cursor-pointer border-2 flex flex-col min-h-[300px] min-w-[350px] mb-10 mr-10 rounded-3xl shadow-lg overflow-hidden">
-										<div className="w-full h-full bg-red-300">
+									return <div onClick={() => (window.location.href = "/editor/" + form?.data?.id)} className="hover:shadow-2xl duration-100 cursor-pointer border-2 flex flex-col min-h-[300px] min-w-[350px] mb-10 mr-10 rounded-3xl shadow-lg overflow-hidden">
+										<div className={`w-full h-full bg-gradient-to-tl from-[` + bgColors[form?.data?.title.toString().toLowerCase()[0]][0] + `] to-[` + bgColors[form?.data?.title.toString().toLowerCase()[0]][1] + "]"}>
 										</div>
 										<div className="p-5 h-auto">
 											<p className="font-semibold text-lg">{form?.data?.title}</p>

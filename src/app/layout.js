@@ -8,21 +8,30 @@ import { alchemyProvider } from "wagmi/providers/alchemy";
 import { publicProvider } from "wagmi/providers/public";
 import "@rainbow-me/rainbowkit/styles.css";
 
-import { jsonRpcProvider } from 'wagmi/providers/jsonRpc'
-
 const inter = Inter({ subsets: ["latin"] });
 
 export default function RootLayout({ children }) {
+	const hedera = {
+		id: 296,
+		name: 'Hedera Testnet',
+		network: 'hedera',
+		iconUrl: 'https://cryptologos.cc/logos/hedera-hbar-logo.png',
+		iconBackground: '#fff',
+		nativeCurrency: {
+			decimals: 18,
+			name: 'Hedera',
+			symbol: 'HBR',
+		},
+		rpcUrls: {
+			public: { http: ['https://testnet.hashio.io/api'] },
+			default: { http: ['https://testnet.hashio.io/api'] },
+		},
+		testnet: true,
+	};
+
 	const { chains, publicClient } = configureChains(
-		[polygonMumbai, sepolia],
+		[polygonMumbai, sepolia, hedera],
 		[alchemyProvider({ apiKey: process.env.ALCHEMY_ID }), publicProvider()],
-		[
-			jsonRpcProvider({
-				rpc: (chain) => ({
-					http: `https://testnet.mirrornode.hedera.com/`,
-				}),
-			}),
-		],
 	);
 
 	var wagmiConfig;

@@ -24,7 +24,7 @@ export default function Home({ params: { formId } }) {
 
 	const [responses, setResponses] = useState([]);
 
-	const temp = () => {};
+	const temp = () => { };
 
 	const initDB = async () => {
 		setLoadingFormData(true);
@@ -48,37 +48,19 @@ export default function Home({ params: { formId } }) {
 	return (
 		<>
 			<Navbar />
-			<div className="flex items-center justify-between tabs mt-3 sticky top-0 z-50 border-b bg-white">
-				<div>
-					<Link href={"/editor/" + formId} className="tab tab-lg tab-lifted ">
-						Editor
-					</Link>
-					<a className="tab tab-lg tab-lifted tab-active">Responses ({responses.length})</a>
+			<div className="flex justify-between p-5">
+				<div className="join">
+					<Link href={"/editor/" + formId}><button className="join-item btn btn-lg">Editor</button></Link>
+					<button className="join-item btn-primary btn-lg">Responses</button>
 				</div>
-
-				<div className="flex items-center bg-sky-500 p-1 px-5 rounded-full">
-					<p
-						className="cursor-pointer underline text-white"
-						onClick={() => window.open("http://localhost:3000/forms/" + formId)}
-					>
-						https://formi.fi/forms/{formId}
-					</p>
-					<button
-						className="ml-2 btn btn-xs bg-sky-300"
-						onClick={() => {
-							navigator.clipboard.writeText(`http://localhost:3000/forms/${formId}`);
-							toast.success("Copied to clipboard!");
-						}}
-					>
-						<FiCopy />
-					</button>
+				<div className="items-center flex p-2 bg-gray-200 rounded-xl">
+					<p className="cursor-pointer underline text-lg px-3" onClick={() => window.open("http://localhost:3000/forms/" + formId)}>https://formify.io/forms/3145267819</p>
+					<button className="ml-2 btn btn-square btn-primary" onClick={() => {
+						navigator.clipboard.writeText(`http://localhost:3000/forms/${formId}`);
+						toast.success("Copied to clipboard!");
+					}}><FiCopy /></button>
 				</div>
-				<button
-					className="m-5 mr-10 btn btn-primary"
-					onClick={() => document.getElementById("my_modal_1").showModal()}
-				>
-					Export
-				</button>
+				<button className="btn btn-primary btn-lg">Export</button>
 			</div>
 			<>
 				<main className="container mx-auto relative mt-6 ">

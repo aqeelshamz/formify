@@ -36,7 +36,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en" data-theme="light">
       <head>
-        <title>Formify</title>
+        <title>IntelliForm</title>
         <link rel="icon" href="/form.png" type="image/png" sizes="any" />
       </head>
       <body className={inter.className}>

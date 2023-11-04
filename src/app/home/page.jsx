@@ -1,5 +1,5 @@
 "use client";
-import { FiEdit, FiEye, FiPlusCircle, FiTrash2 } from "react-icons/fi";
+import { FiEdit, FiEye, FiFile, FiFileText, FiPlusCircle, FiTrash2 } from "react-icons/fi";
 import Navbar from "../components/Navbar";
 import { PiMagicWandFill } from "react-icons/pi";
 import { CiCirclePlus } from "react-icons/ci";
@@ -154,7 +154,7 @@ export default function Home() {
 	return (
 		<div>
 			<Navbar />
-			<main className="flex flex-col items-center h-full">
+			<main className="flex flex-col items-center w-full h-full">
 				{loadingForms ? (
 					""
 				) : userNotLoggedIn ? (
@@ -170,7 +170,7 @@ export default function Home() {
 						<span className="loading loading-spinner loading-lg"></span>
 					</div>
 				) : (
-					<div className="w-[100vw] h-full">
+					<div className="w-full h-full p-5 px-10">
 						<p className="text-xl my-4 mb-7 font-semibold">My forms ({forms.length})</p>
 						<div className="flex flex-wrap w-full">
 							<div onClick={() => document.getElementById("my_modal_1").showModal()} className="hover:shadow-2xl duration-100 cursor-pointer border-2 flex flex-col min-h-[400px] min-w-[350px] mb-10 mr-10 rounded-3xl shadow-lg overflow-hidden">
@@ -182,7 +182,8 @@ export default function Home() {
 							{
 								forms?.map((form) => {
 									return <div onClick={() => (window.location.href = "/editor/" + form?.data?.id)} className="hover:shadow-2xl duration-100 cursor-pointer border-2 flex flex-col min-h-[400px] min-w-[350px] max-h-[400px] max-w-[350px] mb-10 mr-10 rounded-3xl shadow-lg overflow-hidden">
-										<div style={{ background: `linear-gradient(45deg, ${bgColors[form?.data?.title.toString().toLowerCase()[0]][0]}, ${bgColors[form?.data?.title.toString().toLowerCase()[0]][1]})` }} className={"w-full h-full opacity-50"}>
+										<div style={{ background: `linear-gradient(45deg, ${bgColors[form?.data?.title.toString().toLowerCase()[0]][0]}, ${bgColors[form?.data?.title.toString().toLowerCase()[0]][1]})` }} className={"flex items-center justify-center w-full h-full opacity-50"}>
+											<FiFileText style={{color: bgColors[form?.data?.title.toString().toLowerCase()[0]][1]}} className={"h-40 w-40 mb-2"} />
 										</div>
 										<div className="p-5 h-auto">
 											<p className="font-semibold text-lg">{form?.data?.title}</p>
@@ -199,7 +200,7 @@ export default function Home() {
 			{/* modal 1 */}
 			<dialog id="my_modal_1" className="modal">
 				<div className="modal-box max-w-xl">
-					<h3 className="flex items-center font-bold text-2xl"><FiPlusCircle className="mr-2"/> Create form</h3>
+					<h3 className="flex items-center font-bold text-2xl"><FiPlusCircle className="mr-2" /> Create form</h3>
 					{creatingForm ? (
 						"Creating form..."
 					) : (
@@ -233,7 +234,7 @@ export default function Home() {
 						{/* if there is a button in form, it will close the modal */}
 						<button className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
 					</form>
-					<h3 className="font-bold text-2xl">Create form using AI</h3>
+					<h3 className="flex items-center font-bold text-2xl"><PiMagicWandFill className="mr-2" /> Create form using AI</h3>
 					<textarea
 						onChange={(x) => setPrompt(x.target.value)}
 						placeholder="Tell us about your form..."
@@ -241,7 +242,7 @@ export default function Home() {
 					></textarea>
 					<div className="modal-action mt-2 flex justify-center ">
 						<button
-							className={"btn btn-primary w-full " + (generatingForm ? "opacity-5" : "")}
+							className={"btn btn-lg btn-primary w-full " + (generatingForm ? "opacity-60" : "")}
 							onClick={() => {
 								if (generatingForm) {
 									return;
@@ -250,7 +251,7 @@ export default function Home() {
 								}
 							}}
 						>
-							✨ Generate form
+							✨ Formify
 						</button>
 					</div>
 				</div>

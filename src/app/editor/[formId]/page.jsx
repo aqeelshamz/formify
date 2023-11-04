@@ -12,6 +12,7 @@ import { MdOutlineShortText, MdOutlineNumbers, MdAttachMoney } from "react-icons
 import { useEffect, useState } from "react";
 import WeaveDB from "weavedb-sdk";
 import Link from "next/link";
+import { bgColors } from "@/utils/util";
 
 export default function Home({ params: { formId } }) {
 	const temp = () => {

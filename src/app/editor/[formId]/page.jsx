@@ -32,7 +32,7 @@ export default function Home({ params: { formId } }) {
 	const initDB = async () => {
 		setLoadingFormData(true);
 		const db = new WeaveDB({
-			contractTxId: "oj9GzEHQDlK_VQfvGBKFXvyq_zDHdr5m8N0PAU8GysM",
+			contractTxId: "ExSUIcPw2dIpf81aN3H6wT6q19WspZ0oYQMPDrQI82g",
 		});
 		await db.init();
 		setDB(db);

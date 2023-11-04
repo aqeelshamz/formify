@@ -36,9 +36,10 @@ export default function Home() {
 	const initDB = async () => {
 		setLoadingForms(true);
 		const db = new WeaveDB({
-			contractTxId: "oj9GzEHQDlK_VQfvGBKFXvyq_zDHdr5m8N0PAU8GysMco",
+			contractTxId: "ExSUIcPw2dIpf81aN3H6wT6q19WspZ0oYQMPDrQI82g",
 		});
-		await db.init();
+		console.log("DB initing...")
+		console.log(await db.init());
 		console.log("Address is: " + address);
 
 		if (address) {
@@ -138,16 +139,16 @@ export default function Home() {
 		initDB();
 	}, []);
 
-	useEffect(() => {
-		console.log(forms);
-	}, [forms]);
+	// useEffect(() => {
+	// 	console.log(forms);
+	// }, [forms]);
 
-	useEffect(() => {
-		if (!address) {
-			window.location.href = "/";
-		}
-		initDB();
-	}, [address]);
+	// useEffect(() => {
+	// 	if (!address) {
+	// 		window.location.href = "/";
+	// 	}
+	// 	initDB();
+	// }, [address]);
 
 	return (
 		<>
@@ -306,3 +307,5 @@ export default function Home() {
 		</>
 	);
 }
+
+export const dynamic = 'force-dynamic'

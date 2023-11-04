@@ -180,8 +180,8 @@ export default function Home() {
 								</div>
 							</div>
 							{
-								forms?.map((form) => {
-									return <div onClick={() => (window.location.href = "/editor/" + form?.data?.id)} className="hover:shadow-2xl duration-100 cursor-pointer border-2 flex flex-col min-h-[400px] min-w-[350px] max-h-[400px] max-w-[350px] mb-10 mr-10 rounded-3xl shadow-lg overflow-hidden">
+								forms?.map((form, index) => {
+									return <div key={index} onClick={() => (window.location.href = "/editor/" + form?.data?.id)} className="hover:shadow-2xl duration-100 cursor-pointer border-2 flex flex-col min-h-[400px] min-w-[350px] max-h-[400px] max-w-[350px] mb-10 mr-10 rounded-3xl shadow-lg overflow-hidden">
 										<div style={{ background: `linear-gradient(45deg, ${bgColors[form?.data?.title.toString().toLowerCase()[0]][0]}, ${bgColors[form?.data?.title.toString().toLowerCase()[0]][1]})` }} className={"flex items-center justify-center w-full h-full opacity-50"}>
 											<FiFileText style={{color: bgColors[form?.data?.title.toString().toLowerCase()[0]][1]}} className={"h-40 w-40 mb-2"} />
 										</div>

@@ -251,7 +251,7 @@ export default function Home() {
 								}
 							}}
 						>
-							✨ Formify
+							{generatingForm ? <span className="loading loading-spinner loading-sm"></span> : ""}{generatingForm ? "Generating Form..." : "✨ Formify"}
 						</button>
 					</div>
 				</div>

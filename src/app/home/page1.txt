@@ -1,0 +1,62 @@
+<div className="overflow-x-auto">
+							<table className="table table-zebra border">
+								{/* head */}
+								<thead>
+									<tr className="text-[1.2rem]">
+										<th></th>
+										<th>Name</th>
+										<th>Responses</th>
+										<th>View</th>
+										<th>Edit</th>
+										<th>Delete</th>
+									</tr>
+								</thead>
+								<tbody>
+									{/* row 1 */}
+									{forms?.map((form, index) => {
+										return (
+											<tr key={index}>
+												<th>{index + 1}</th>
+												<td className="font-semibold text-[1rem]">{form?.data?.title}</td>
+												<td className="font-semibold text-[1rem]">
+													{
+														responses?.filter(
+															(response) => response?.data?.formId === form?.data?.id
+														).length
+													}
+												</td>
+												<td>
+													<button
+														className="btn btn-square btn-outline"
+														onClick={() => window.open("/forms/" + form?.data?.id)}
+													>
+														<FiEye className="h-6 w-6" />
+													</button>
+												</td>
+												<td>
+													<button
+														className="btn btn-square btn-outline"
+														onClick={() =>
+															(window.location.href = "/editor/" + form?.data?.id)
+														}
+													>
+														<FiEdit className="h-6 w-6" />
+													</button>
+												</td>
+												<td>
+													<button
+														className="btn text-red-500 hover:bg-red-500 hover:border-white border-red-500 btn-outline"
+														onClick={async () => {
+															console.log(await db.delete("forms", form?.id));
+															toast.success("Form deleted successfully!");
+														}}
+													>
+														<FiTrash2 className="h-6 w-6" />
+													</button>
+												</td>
+											</tr>
+										);
+									})}
+								</tbody>
+							</table>
+						</div>

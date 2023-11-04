@@ -1,7 +1,8 @@
 "use client";
-import { FiEdit, FiEye, FiTrash2 } from "react-icons/fi";
+import { FiEdit, FiEye, FiPlusCircle, FiTrash2 } from "react-icons/fi";
 import Navbar from "../components/Navbar";
 import { PiMagicWandFill } from "react-icons/pi";
+import { CiCirclePlus } from "react-icons/ci";
 import { useEffect, useState } from "react";
 import OpenAI from "openai";
 import { formGenerationPrompt } from "../../utils/util";
@@ -139,16 +140,16 @@ export default function Home() {
 		initDB();
 	}, []);
 
-	// useEffect(() => {
-	// 	console.log(forms);
-	// }, [forms]);
+	useEffect(() => {
+		console.log(forms);
+	}, [forms]);
 
-	// useEffect(() => {
-	// 	if (!address) {
-	// 		window.location.href = "/";
-	// 	}
-	// 	initDB();
-	// }, [address]);
+	useEffect(() => {
+		if (!address) {
+			window.location.href = "/";
+		}
+		initDB();
+	}, [address]);
 
 	return (
 		<>
@@ -161,14 +162,7 @@ export default function Home() {
 						<p className="text-xl my-4 font-semibold mb-5">Connect your wallet to start creating forms.</p>
 						<ConnectButton />
 					</div>
-				) : (
-					<button
-						className="btn btn-primary btn-lg mb-5"
-						onClick={() => document.getElementById("my_modal_1").showModal()}
-					>
-						+ New Form
-					</button>
-				)}
+				) : ""}
 				{userNotLoggedIn ? (
 					""
 				) : loadingForms ? (
@@ -177,68 +171,26 @@ export default function Home() {
 					</div>
 				) : (
 					<>
-						<p className="text-xl my-4 font-semibold">My forms ({forms.length})</p>
-						<div className="overflow-x-auto">
-							<table className="table table-zebra border">
-								{/* head */}
-								<thead>
-									<tr className="text-[1.2rem]">
-										<th></th>
-										<th>Name</th>
-										<th>Responses</th>
-										<th>View</th>
-										<th>Edit</th>
-										<th>Delete</th>
-									</tr>
-								</thead>
-								<tbody>
-									{/* row 1 */}
-									{forms?.map((form, index) => {
-										return (
-											<tr key={index}>
-												<th>{index + 1}</th>
-												<td className="font-semibold text-[1rem]">{form?.data?.title}</td>
-												<td className="font-semibold text-[1rem]">
-													{
-														responses?.filter(
-															(response) => response?.data?.formId === form?.data?.id
-														).length
-													}
-												</td>
-												<td>
-													<button
-														className="btn btn-square btn-outline"
-														onClick={() => window.open("/forms/" + form?.data?.id)}
-													>
-														<FiEye className="h-6 w-6" />
-													</button>
-												</td>
-												<td>
-													<button
-														className="btn btn-square btn-outline"
-														onClick={() =>
-															(window.location.href = "/editor/" + form?.data?.id)
-														}
-													>
-														<FiEdit className="h-6 w-6" />
-													</button>
-												</td>
-												<td>
-													<button
-														className="btn text-red-500 hover:bg-red-500 hover:border-white border-red-500 btn-outline"
-														onClick={async () => {
-															console.log(await db.delete("forms", form?.id));
-															toast.success("Form deleted successfully!");
-														}}
-													>
-														<FiTrash2 className="h-6 w-6" />
-													</button>
-												</td>
-											</tr>
-										);
-									})}
-								</tbody>
-							</table>
+						<p className="text-xl my-4 mb-7 font-semibold">My forms ({forms.length})</p>
+						<div className="flex flex-wrap">
+							<div onClick={() => document.getElementById("my_modal_1").showModal()} className="hover:shadow-2xl duration-100 cursor-pointer border-2 flex flex-col min-h-[400px] min-w-[350px] mb-10 mr-10 rounded-3xl shadow-lg overflow-hidden">
+								<div className="flex flex-col items-center justify-center w-full h-full">
+									<CiCirclePlus className="h-40 w-40 mb-2" />
+									<p>New Form</p>
+								</div>
+							</div>
+							{
+								forms?.map((form) => {
+									return <div className="hover:shadow-2xl duration-100 cursor-pointer border-2 flex flex-col min-h-[300px] min-w-[350px] mb-10 mr-10 rounded-3xl shadow-lg overflow-hidden">
+										<div className="w-full h-full bg-red-300">
+										</div>
+										<div className="p-5 h-auto">
+											<p className="font-semibold text-lg">{form?.data?.title}</p>
+											<p>No responses</p>
+										</div>
+									</div>
+								})
+							}
 						</div>
 					</>
 				)}

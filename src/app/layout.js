@@ -58,9 +58,10 @@ export default function RootLayout({ children }) {
 				<link rel="icon" href="/form.png" type="image/png" sizes="any" />
 			</head>
 			<body className={inter.className}>
+				
 				<WagmiConfig config={wagmiConfig} className="sticky top-0 z-50">
 					<RainbowKitProvider chains={chains}>{children}</RainbowKitProvider>
-				</WagmiConfig >
+				</WagmiConfig>
 			</body>
 		</html>
 	);

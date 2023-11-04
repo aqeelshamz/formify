@@ -37,7 +37,7 @@ export default function Home() {
 	const initDB = async () => {
 		setLoadingForms(true);
 		const db = new WeaveDB({
-			contractTxId: "ExSUIcPw2dIpf81aN3H6wT6q19WspZ0oYQMPDrQI82g",
+			contractTxId: "oj9GzEHQDlK_VQfvGBKFXvyq_zDHdr5m8N0PAU8GysM",
 		});
 		console.log("DB initing...")
 		console.log(await db.init());
@@ -152,9 +152,9 @@ export default function Home() {
 	}, [address]);
 
 	return (
-		<>
+		<div>
 			<Navbar />
-			<main className="container mx-auto pt-5 mb-20">
+			<main className="flex flex-col items-center h-full">
 				{loadingForms ? (
 					""
 				) : userNotLoggedIn ? (
@@ -170,19 +170,19 @@ export default function Home() {
 						<span className="loading loading-spinner loading-lg"></span>
 					</div>
 				) : (
-					<>
+					<div className="w-[100vw] h-full">
 						<p className="text-xl my-4 mb-7 font-semibold">My forms ({forms.length})</p>
-						<div className="flex flex-wrap">
+						<div className="flex flex-wrap w-full">
 							<div onClick={() => document.getElementById("my_modal_1").showModal()} className="hover:shadow-2xl duration-100 cursor-pointer border-2 flex flex-col min-h-[400px] min-w-[350px] mb-10 mr-10 rounded-3xl shadow-lg overflow-hidden">
 								<div className="flex flex-col items-center justify-center w-full h-full">
 									<CiCirclePlus className="h-40 w-40 mb-2" />
-									<p>New Form</p>
+									<p className="font-semibold text-xl">New Form</p>
 								</div>
 							</div>
 							{
 								forms?.map((form) => {
-									return <div onClick={() => (window.location.href = "/editor/" + form?.data?.id)} className="hover:shadow-2xl duration-100 cursor-pointer border-2 flex flex-col min-h-[300px] min-w-[350px] mb-10 mr-10 rounded-3xl shadow-lg overflow-hidden">
-										<div className={`w-full h-full bg-gradient-to-tl from-[` + bgColors[form?.data?.title.toString().toLowerCase()[0]][0] + `] to-[` + bgColors[form?.data?.title.toString().toLowerCase()[0]][1] + "]"}>
+									return <div onClick={() => (window.location.href = "/editor/" + form?.data?.id)} className="hover:shadow-2xl duration-100 cursor-pointer border-2 flex flex-col min-h-[400px] min-w-[350px] max-h-[400px] max-w-[350px] mb-10 mr-10 rounded-3xl shadow-lg overflow-hidden">
+										<div style={{ background: `linear-gradient(45deg, ${bgColors[form?.data?.title.toString().toLowerCase()[0]][0]}, ${bgColors[form?.data?.title.toString().toLowerCase()[0]][1]})` }} className={"w-full h-full opacity-50"}>
 										</div>
 										<div className="p-5 h-auto">
 											<p className="font-semibold text-lg">{form?.data?.title}</p>
@@ -192,14 +192,14 @@ export default function Home() {
 								})
 							}
 						</div>
-					</>
+					</div>
 				)}
 			</main>
 			{/* Modals */}
 			{/* modal 1 */}
 			<dialog id="my_modal_1" className="modal">
 				<div className="modal-box max-w-xl">
-					<h3 className="font-bold text-2xl">Create form</h3>
+					<h3 className="flex items-center font-bold text-2xl"><FiPlusCircle className="mr-2"/> Create form</h3>
 					{creatingForm ? (
 						"Creating form..."
 					) : (
@@ -256,7 +256,7 @@ export default function Home() {
 				</div>
 			</dialog>
 			<ToastContainer />
-		</>
+		</div>
 	);
 }
 

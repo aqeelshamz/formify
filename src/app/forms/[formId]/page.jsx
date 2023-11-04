@@ -181,10 +181,10 @@ export default function Form({ params: { formId } }) {
         <p>
           Your form has been submitted successfully.
         </p>
-        <button className="btn btn-primary mt-10">⚡️ Create your intelliform</button>
+        <button className="btn btn-primary mt-10">⚡️ Create your form</button>
         <hr className="my-10" />
         <div className="flex items-center mt-5">
-          <p>powered by</p><p className="ml-2 text-xl font-semibold">IntelliForm</p>
+          <p>powered by</p><p className="ml-2 text-xl font-semibold">Formify AI</p>
         </div>
       </div> : loadingFormData ? (
         <div className="w-full h-full flex items-center justify-center">
@@ -279,7 +279,7 @@ export default function Form({ params: { formId } }) {
               <p className="mb-5 font-semibold">Connect wallet to submit form</p>
               <ConnectButton /></div>}
             <div className="flex items-center mt-5">
-              <p>powered by</p><p className="ml-2 text-xl font-semibold">IntelliForm</p>
+              <p>powered by</p><p className="ml-2 text-xl font-semibold">Formify AI</p>
             </div>
           </div>
         </div>

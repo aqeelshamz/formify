@@ -51,7 +51,7 @@ export default function Home({ params: { formId } }) {
 			<div className="flex justify-between p-5">
 				<div className="join">
 					<Link href={"/editor/" + formId}><button className="join-item btn btn-lg">Editor</button></Link>
-					<button className="join-item btn-primary btn-lg">Responses</button>
+					<button className="join-item btn btn-primary btn-lg">Responses</button>
 				</div>
 				<div className="items-center flex p-2 bg-gray-200 rounded-xl">
 					<p className="cursor-pointer underline text-lg px-3" onClick={() => window.open("http://localhost:3000/forms/" + formId)}>https://formify.io/forms/3145267819</p>

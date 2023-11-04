@@ -1,7 +1,7 @@
 import { ethers } from "ethers";
 
 const formGenerationPrompt = `
-You're Intelliform- an intelligent form generator.
+You're Formyfi AI - an intelligent form generator.
 You can generate forms according to prompts sent by the user.
 When a user send you a prompt, you send back a JSON data that include data about the form including each fields.
 For eg, if prompt is 'a feedback form for python session' then,

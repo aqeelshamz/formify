@@ -246,7 +246,7 @@ export default function Home({ params: { formId } }) {
 					<div className="flex flex-wrap mt-6 gap-5 text-2xl max-w-full overflow-hidden">
 						<button className="flex btn btn-outline  w-[271px] h-[69px] " onClick={() => {
 							form.fields.push({
-								title: "Untitled",
+								title: "Text Question",
 								type: "text",
 							});
 							setForm({ ...form });
@@ -255,35 +255,91 @@ export default function Home({ params: { formId } }) {
 							<MdOutlineShortText size={28} />
 							Text
 						</button>
-						<button className="flex btn btn-outline  w-[271px] h-[69px] " onClick={temp}>
+						<button className="flex btn btn-outline  w-[271px] h-[69px] " onClick={() => {
+							form.fields.push({
+								title: "Long text Question",
+								type: "long-text",
+							});
+							setForm({ ...form });
+							document.getElementById("my_modal_1").close();
+						}}>
 							<BsTextareaResize size={28} />
 							Long text
 						</button>
-						<button className="flex btn btn-outline  w-[271px] h-[69px] " onClick={temp}>
+						<button className="flex btn btn-outline  w-[271px] h-[69px] " onClick={() => {
+							form.fields.push({
+								title: "Email",
+								type: "email",
+							});
+							setForm({ ...form });
+							document.getElementById("my_modal_1").close();
+						}}>
 							<HiOutlineMail size={28} />
 							Email
 						</button>
-						<button className="flex btn btn-outline  w-[271px] h-[69px] " onClick={temp}>
+						<button className="flex btn btn-outline  w-[271px] h-[69px] " onClick={() => {
+							form.fields.push({
+								title: "Multiple Choice Question",
+								type: "multiple-choice",
+							});
+							setForm({ ...form });
+							document.getElementById("my_modal_1").close();
+						}}>
 							<BiSelectMultiple size={28} />
 							Multiple Choice
 						</button>
-						<button className="flex btn btn-outline  w-[271px] h-[69px] " onClick={temp}>
+						<button className="flex btn btn-outline  w-[271px] h-[69px] " onClick={() => {
+							form.fields.push({
+								title: "Number Question",
+								type: "number",
+							});
+							setForm({ ...form });
+							document.getElementById("my_modal_1").close();
+						}}>
 							<MdOutlineNumbers size={28} />
 							Number
 						</button>
-						<button className="flex btn btn-outline  w-[271px] h-[69px] " onClick={temp}>
+						<button className="flex btn btn-outline  w-[271px] h-[69px] " onClick={() => {
+							form.fields.push({
+								title: "Date",
+								type: "date",
+							});
+							setForm({ ...form });
+							document.getElementById("my_modal_1").close();
+						}}>
 							<BsCalendar2Date size={25} />
 							Date
 						</button>
-						<button className="flex btn btn-outline  w-[271px] h-[69px] " onClick={temp}>
+						<button className="flex btn btn-outline  w-[271px] h-[69px] " onClick={() => {
+							form.fields.push({
+								title: "File Upload",
+								type: "file",
+							});
+							setForm({ ...form });
+							document.getElementById("my_modal_1").close();
+						}}>
 							<FaRegFile size={25} />
 							File
 						</button>
-						<button className="flex btn btn-outline  w-[271px] h-[69px] " onClick={temp}>
+						<button className="flex btn btn-outline  w-[271px] h-[69px] " onClick={() => {
+							form.fields.push({
+								title: "Phone Number",
+								type: "phone",
+							});
+							setForm({ ...form });
+							document.getElementById("my_modal_1").close();
+						}}>
 							<TbPhone size={24} />
 							Phone
 						</button>
-						<button className="flex btn btn-outline  w-[271px] h-[69px] " onClick={temp}>
+						<button className="flex btn btn-outline  w-[271px] h-[69px] " onClick={() => {
+							form.fields.push({
+								title: "Payment",
+								type: "payment",
+							});
+							setForm({ ...form });
+							document.getElementById("my_modal_1").close();
+						}}>
 							<MdAttachMoney size={27} className="-mt-1" />
 							Cash
 						</button>

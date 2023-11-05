@@ -200,7 +200,7 @@ export default function Form({ params: { formId } }) {
 							<span className="text-3xl font-bold ">📄 {form?.title}</span>
 						</div>
 						<div className="mt-5 flex items-center gap-3">
-							<span className="text-md">{form?.description}</span>
+							<span className="text-lg">{form?.description}</span>
 						</div>
 					</div>
 					<div className="inputs min-w-[50vw]">
@@ -208,7 +208,7 @@ export default function Form({ params: { formId } }) {
 							return (
 								<div className="inputrow" key={index}>
 									<div className="flex items-center gap-3 mt-5">
-										<label className="flex items-center text-md font-semibold">{({
+										<label className="flex items-center text-lg font-semibold">{({
 											"text": <MdOutlineShortText className="mr-2" />,
 											"longtext": <BsTextareaResize className="mr-2" />,
 											"multiplechoice": <BiSelectMultiple className="mr-2" />,
@@ -278,7 +278,7 @@ export default function Form({ params: { formId } }) {
 						{!isNFTValid || validatingNFT ? "" : submittingForm ? <div className="flex items-center">
 							<span className="loading loading-spinner loading-md"></span>
 							<p className="font-semibold text-md ml-2">Submitting form...</p>
-						</div> : address ? <button className="btn btn-primary" onClick={submitForm}><FiCheckCircle /> Submit form</button> : <div className="flex flex-col">
+						</div> : address ? <button className="btn btn-primary btn-lg" onClick={submitForm}><FiCheckCircle /> Submit form</button> : <div className="flex flex-col">
 							<p className="mb-5 font-semibold">Connect wallet to submit form</p>
 							<ConnectButton /></div>}
 						<div className="flex items-center mt-5">

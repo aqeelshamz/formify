@@ -13,12 +13,12 @@ function Navbar() {
 					<FiFileText/> Formify AI
 				</Link>
 				<div className="m-2">
-					<button className="btn btn-primary mr-5" onClick={() => document.getElementById('my_modal_2').showModal()}>🚀 Go Premium</button>
+					<button className="btn btn-primary mr-5" onClick={() => document.getElementById('my_modal_x').showModal()}>🚀 Go Premium</button>
 					<ConnectButton />
 				</div>
 			</div>
 			{/* Premium Modal */}
-			<dialog id="my_modal_2" className="modal">
+			<dialog id="my_modal_x" className="modal">
 				<div className="modal-box">
 					<h3 className="font-bold text-2xl">🚀 Go Premium!</h3>
 					<p className="py-4 font-semibold text-xl">Enjoy premium features for just $49/month!</p>
@@ -29,7 +29,7 @@ function Navbar() {
 					<div className="modal-action mt-10 flex justify-center ">
 						<button
 							className={"btn btn-lg btn-primary w-full"}
-							onClick={() => document.getElementById('my_modal_2').close()}
+							onClick={() => document.getElementById('my_modal_x').close()}
 						>
 							Upgrade now 🚀
 						</button>

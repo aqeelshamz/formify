@@ -11,9 +11,11 @@ function Navbar() {
 					Formify AI
 				</Link>
 				<div className="m-2">
+					<button className="btn btn-primary mr-5">🚀 Go Premium</button>
 					<ConnectButton />
 				</div>
 			</div>
+			
 		</div>
 	);
 }

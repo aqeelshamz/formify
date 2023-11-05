@@ -208,20 +208,7 @@ export default function Home({ params: { formId } }) {
 														setForm({ ...form });
 													}}
 												>
-													<svg
-														xmlns="http://www.w3.org/2000/svg"
-														className="h-6 w-6"
-														fill="none"
-														viewBox="0 0 24 24"
-														stroke="currentColor"
-													>
-														<path
-															strokeLinecap="round"
-															strokeLinejoin="round"
-															strokeWidth="2"
-															d="M6 18L18 6M6 6l12 12"
-														/>
-													</svg>
+													<FiTrash2 />
 												</button>
 											</div>
 										</div>
@@ -281,6 +268,7 @@ export default function Home({ params: { formId } }) {
 							form.fields.push({
 								title: "Multiple Choice Question",
 								type: "multiple-choice",
+								choices: ["Option 1", "Option 2", "Option 3"],
 							});
 							setForm({ ...form });
 							document.getElementById("my_modal_1").close();
@@ -336,6 +324,7 @@ export default function Home({ params: { formId } }) {
 							form.fields.push({
 								title: "Payment",
 								type: "payment",
+								amount: 0.005,
 							});
 							setForm({ ...form });
 							document.getElementById("my_modal_1").close();

@@ -191,7 +191,7 @@ export default function Form({ params: { formId } }) {
           <span className="loading loading-spinner loading-lg"></span>
         </div>
       ) : (
-        <div className="flex flex-col items-center bg-white rounded-xl py-10 px-20">
+        <div className="flex flex-col items-center bg-white py-10 px-20 shadow-2xl rounded-2xl">
           <div className="row1 title flex flex-col items-center">
             <div className="flex items-center gap-3">
               <span className="text-3xl font-bold ">📄 {form?.title}</span>

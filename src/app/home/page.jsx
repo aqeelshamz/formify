@@ -182,13 +182,13 @@ export default function Home() {
 							</div>
 							{
 								forms?.map((form, index) => {
-									return <Section translate="translateY(10px)" duration={((index * 0.075) + 0.5).toString() + "s"}><div key={index} onClick={() => (window.location.href = "/editor/" + form?.data?.id)} className="hover:shadow-2xl duration-100 cursor-pointer border-2 flex flex-col h-full w-full mb-10 mr-10 rounded-3xl shadow-lg overflow-hidden">
+									return <Section key={index} translate="translateY(10px)" duration={((index * 0.075) + 0.5).toString() + "s"}><div onClick={() => (window.location.href = "/editor/" + form?.data?.id)} className="hover:shadow-2xl duration-100 cursor-pointer border-2 flex flex-col h-full w-full mb-10 mr-10 rounded-3xl shadow-lg overflow-hidden">
 										<div style={{ background: `linear-gradient(45deg, ${bgColors[form?.data?.title.toString().toLowerCase()[0]][0]}, ${bgColors[form?.data?.title.toString().toLowerCase()[0]][1]})` }} className={"flex items-center justify-center w-full h-full opacity-50"}>
 											<FiFileText style={{ color: bgColors[form?.data?.title.toString().toLowerCase()[0]][1] }} className={"h-40 w-40 mb-2"} />
 										</div>
 										<div className="p-5 h-auto">
 											<p className="font-semibold text-lg">{form?.data?.title}</p>
-											<p>No responses</p>
+											<p className="text-gray-500">No responses</p>
 										</div>
 									</div></Section>
 								})

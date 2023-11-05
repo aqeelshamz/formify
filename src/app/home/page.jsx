@@ -12,6 +12,7 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useAccount } from "wagmi";
 import { ConnectButton } from "@rainbow-me/rainbowkit";
+import Section from "../components/Animate";
 
 export default function Home() {
 	const [prompt, setPrompt] = useState("");
@@ -181,15 +182,15 @@ export default function Home() {
 							</div>
 							{
 								forms?.map((form, index) => {
-									return <div key={index} onClick={() => (window.location.href = "/editor/" + form?.data?.id)} className="hover:shadow-2xl duration-100 cursor-pointer border-2 flex flex-col min-h-[400px] min-w-[350px] max-h-[400px] max-w-[350px] mb-10 mr-10 rounded-3xl shadow-lg overflow-hidden">
+									return <Section translate="translateY(10px)" duration={((index * 0.075) + 0.5).toString() + "s"}><div key={index} onClick={() => (window.location.href = "/editor/" + form?.data?.id)} className="hover:shadow-2xl duration-100 cursor-pointer border-2 flex flex-col h-full w-full mb-10 mr-10 rounded-3xl shadow-lg overflow-hidden">
 										<div style={{ background: `linear-gradient(45deg, ${bgColors[form?.data?.title.toString().toLowerCase()[0]][0]}, ${bgColors[form?.data?.title.toString().toLowerCase()[0]][1]})` }} className={"flex items-center justify-center w-full h-full opacity-50"}>
-											<FiFileText style={{color: bgColors[form?.data?.title.toString().toLowerCase()[0]][1]}} className={"h-40 w-40 mb-2"} />
+											<FiFileText style={{ color: bgColors[form?.data?.title.toString().toLowerCase()[0]][1] }} className={"h-40 w-40 mb-2"} />
 										</div>
 										<div className="p-5 h-auto">
 											<p className="font-semibold text-lg">{form?.data?.title}</p>
 											<p>No responses</p>
 										</div>
-									</div>
+									</div></Section>
 								})
 							}
 						</div>

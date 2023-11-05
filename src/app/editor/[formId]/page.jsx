@@ -1,6 +1,6 @@
 "use client";
 import Navbar from "../../components/Navbar";
-import { FiEdit, FiTrash2, FiCopy } from "react-icons/fi";
+import { FiEdit, FiTrash2, FiCopy, FiSave, FiPlusCircle } from "react-icons/fi";
 import { FaRegFile } from "react-icons/fa";
 import { TbPhone } from "react-icons/tb";
 import { BsTextareaResize, BsCalendar2Date } from "react-icons/bs";
@@ -112,7 +112,7 @@ export default function Home({ params: { formId } }) {
 						toast.success("Copied to clipboard!");
 					}}><FiCopy /></button>
 				</div>
-				<button className="btn btn-primary btn-lg" onClick={saveForm}>Save</button>
+				<button className="btn btn-primary btn-lg" onClick={saveForm}><FiSave/> Save</button>
 			</div>
 			<main className="container mx-auto relative mt-6 ">
 				{loadingFormData ? (
@@ -232,7 +232,7 @@ export default function Home({ params: { formId } }) {
 								className="btn mt-10 mb-5 btn-xs sm:btn-sm md:btn-md lg:btn-lg bg-black hover:bg-gray-700  text-white w-96 lg:w-[896px]"
 								onClick={() => document.getElementById("my_modal_1").showModal()}
 							>
-								Add Content
+								<FiPlusCircle/> Add Content
 							</button>
 						</div>
 					</div>
@@ -244,7 +244,14 @@ export default function Home({ params: { formId } }) {
 				<div className="modal-box max-w-[950px] max-h-[450px]">
 					<h3 className="font-bold text-2xl">Choose form input</h3>
 					<div className="flex flex-wrap mt-6 gap-5 text-2xl max-w-full overflow-hidden">
-						<button className="flex btn btn-outline  w-[271px] h-[69px] " onClick={temp}>
+						<button className="flex btn btn-outline  w-[271px] h-[69px] " onClick={()=>{
+							form.fields.push({
+								title: "Untitled",
+								type: "text",
+							});
+							setForm({...form});
+							document.getElementById("my_modal_1").close();
+						}}>
 							<MdOutlineShortText size={28} />
 							Text
 						</button>

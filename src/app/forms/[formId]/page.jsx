@@ -16,6 +16,7 @@ import { BiSelectMultiple } from "react-icons/bi";
 import { BsCalendar2Date, BsTextareaResize } from "react-icons/bs";
 import { FaRegFile } from "react-icons/fa";
 import { TbPhone } from "react-icons/tb";
+import Image from "next/image";
 
 export default function Form({ params: { formId } }) {
 	let provider = new ethers.BrowserProvider(window.ethereum);
@@ -289,22 +290,27 @@ export default function Form({ params: { formId } }) {
 			<ToastContainer />
 			<dialog id="my_modal_2" className="modal">
 				<div className="modal-box w-11/12 max-w-3xl">
-					<h3 className="font-bold text-2xl flex items-center"><FiKey className="mr-2"/> Access Verification</h3>
-					{
-						validatingNFT ? <p className="mt-5 text-2xl text-gray-800"><span className="loading loading-spinner loading-md mr-2"></span> Checking NFT...</p> : isNFTValid ? <p className="mt-5 text-2xl text-green-500">✅ NFT verified. You can continue.</p> : <p className="mt-5 text-2xl text-red-500">❌ No valid NFT found in your wallet.</p>
-					}
-					{validatingNFT ? "" : <div className="mt-10 modal-action flex justify-center ">
-						<button
-							className={
-								"btn btn-primary w-full "
-							}
-							onClick={() => {
-								document.getElementById("my_modal_2").close();
-							}}
-						>
-							{isNFTValid ? "Continue" : "Close"}
-						</button>
-					</div>}
+					<h3 className="font-bold text-2xl flex items-center mb-5"><FiKey className="mr-2" /> Access Verification</h3>
+					<div className="flex flex-col items-center">
+						{
+							validatingNFT ? "" : isNFTValid ? <Image src={"/nft-valid.png"} width={500} height={250} /> : <Image src={"/nft-invalid.png"} width={500} height={250} />
+						}
+						{
+							validatingNFT ? <p className="mt-5 text-2xl text-gray-800"><span className="loading loading-spinner loading-md mr-2"></span> Checking NFT...</p> : isNFTValid ? <p className="mt-5 text-2xl text-green-500">✅ NFT verified. You can continue.</p> : <p className="mt-5 text-2xl text-red-500">❌ No valid NFT found in your wallet.</p>
+						}
+						{validatingNFT ? "" : <div className="mt-10 modal-action flex justify-center ">
+							<button
+								className={
+									"btn btn-primary w-full "
+								}
+								onClick={() => {
+									document.getElementById("my_modal_2").close();
+								}}
+							>
+								{isNFTValid ? "Continue" : "Close"}
+							</button>
+						</div>}
+					</div>
 				</div>
 			</dialog>
 		</main>

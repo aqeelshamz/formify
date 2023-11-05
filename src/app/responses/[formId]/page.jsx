@@ -33,7 +33,7 @@ export default function Home({ params: { formId } }) {
 		});
 		await db.init();
 		setDB(db);
-		const responses = await db.cget("responses");
+		const responses = await db.get("responses", ["formId", "==", formId]);
 		setResponses(responses);
 		console.log(responses);
 		setForm((await db.get("forms", ["id", "==", formId]))[0]);
@@ -95,21 +95,21 @@ export default function Home({ params: { formId } }) {
 											return (
 												<tr key={index}>
 													<td>{index + 1}</td>
-													{Object.keys(response?.data?.answers)?.map((key, i) => {
+													{Object.keys(response?.answers)?.map((key, i) => {
 														return (
 															<td key={i}>
-																{response?.data?.answers[key]
+																{response?.answers[key]
 																	.toString()
 																	.includes("https://") ? (
 																	<Link
 																		className="cursor-pointer underline text-blue-500"
-																		href={response?.data?.answers[key]}
+																		href={response?.answers[key]}
 																		target="_blank"
 																	>
 																		Download
 																	</Link>
 																) : (
-																	response?.data?.answers[key]
+																	response?.answers[key]
 																)}
 															</td>
 														);

@@ -50,20 +50,26 @@ export default function Home() {
         <div className="mt-20 flex ml-20">
           <div className="card w-96 backdrop-filter backdrop-blur-lg bg-opacity-30  bg-base-100 border-b border-gray-200 mr-2">
             <div className="card-body">
-              <h2 className="card-title">📄 Forms</h2>
-              <p>Create registration forms, feedback forms, etc.</p>
+              <h2 className="card-title mb-5">📄 Forms</h2>
+              <p className="font-semibold">🤖 AI-Generated Forms</p>
+              <p className="font-semibold">⏰ Save time on form creation</p>
+              <p className="font-semibold">🎯 Tailor forms to your specific needs</p>
             </div>
           </div>
           <div className="card w-96 backdrop-filter backdrop-blur-lg bg-opacity-30  bg-base-100 border-b border-gray-200 mr-2">
             <div className="card-body">
-              <h2 className="card-title">📅 Events</h2>
-              <p>Create events and sell tickets.</p>
+              <h2 className="card-title mb-5">📅 Events</h2>
+              <p className="font-semibold">📲 Simplify event sign-ups</p>
+              <p className="font-semibold">🔑 Access Validation using NFT</p>
+              <p className="font-semibold">🎁 NFT Reward System (Future)</p>
             </div>
           </div>
           <div className="card w-96 backdrop-filter backdrop-blur-lg bg-opacity-30  bg-base-100 border-b border-gray-200 mr-2">
             <div className="card-body">
-              <h2 className="card-title">👥 Surveys</h2>
-              <p>Create surveys and polls.</p>
+              <h2 className="card-title mb-5">👥 Surveys</h2>
+              <p className="font-semibold">🔐 Immutable data</p>
+              <p className="font-semibold">🌟 Collect honest feedback</p>
+              <p className="font-semibold">🤝 Maintain trust in your survey data</p>
             </div>
           </div>
         </div>

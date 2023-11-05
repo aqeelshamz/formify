@@ -106,13 +106,13 @@ export default function Home({ params: { formId } }) {
 					<Link href={"/responses/" + formId}><button className="join-item btn btn-lg">Responses</button></Link>
 				</div>
 				<div className="items-center flex p-2 bg-gray-200 rounded-xl">
-					<p className="cursor-pointer underline text-lg px-3" onClick={() => window.open("http://localhost:3000/forms/" + formId)}>https://formify.io/forms/3145267819</p>
+					<p className="cursor-pointer underline text-lg px-3" onClick={() => window.open((new URL(window.location.href)).protocol + "//" + (new URL(window.location.href)).host + "/forms/" + formId)}>{(new URL(window.location.href)).protocol + "//" + (new URL(window.location.href)).host + "/forms/" + formId}</p>
 					<button className="ml-2 btn btn-square btn-primary" onClick={() => {
-						navigator.clipboard.writeText(`http://localhost:3000/forms/${formId}`);
+						navigator.clipboard.writeText((new URL(window.location.href)).protocol + "//" + (new URL(window.location.href)).host + `/forms/${formId}`);
 						toast.success("Copied to clipboard!");
 					}}><FiCopy /></button>
 				</div>
-				<button className="btn btn-primary btn-lg" onClick={saveForm}><FiSave/> Save</button>
+				<button className="btn btn-primary btn-lg" onClick={saveForm}><FiSave /> Save</button>
 			</div>
 			<main className="container mx-auto relative mt-6 ">
 				{loadingFormData ? (
@@ -232,7 +232,7 @@ export default function Home({ params: { formId } }) {
 								className="btn mt-10 mb-5 btn-xs sm:btn-sm md:btn-md lg:btn-lg bg-black hover:bg-gray-700  text-white w-96 lg:w-[896px]"
 								onClick={() => document.getElementById("my_modal_1").showModal()}
 							>
-								<FiPlusCircle/> Add Content
+								<FiPlusCircle /> Add Content
 							</button>
 						</div>
 					</div>
@@ -244,12 +244,12 @@ export default function Home({ params: { formId } }) {
 				<div className="modal-box max-w-[950px] max-h-[450px]">
 					<h3 className="font-bold text-2xl">Choose form input</h3>
 					<div className="flex flex-wrap mt-6 gap-5 text-2xl max-w-full overflow-hidden">
-						<button className="flex btn btn-outline  w-[271px] h-[69px] " onClick={()=>{
+						<button className="flex btn btn-outline  w-[271px] h-[69px] " onClick={() => {
 							form.fields.push({
 								title: "Untitled",
 								type: "text",
 							});
-							setForm({...form});
+							setForm({ ...form });
 							document.getElementById("my_modal_1").close();
 						}}>
 							<MdOutlineShortText size={28} />

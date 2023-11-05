@@ -54,9 +54,9 @@ export default function Home({ params: { formId } }) {
 					<button className="join-item btn btn-primary btn-lg">Responses</button>
 				</div>
 				<div className="items-center flex p-2 bg-gray-200 rounded-xl">
-					<p className="cursor-pointer underline text-lg px-3" onClick={() => window.open("http://localhost:3000/forms/" + formId)}>https://formify.io/forms/3145267819</p>
+					<p className="cursor-pointer underline text-lg px-3" onClick={() => window.open((new URL(window.location.href)).protocol + "//" + (new URL(window.location.href)).host + "/forms/" + formId)}>{(new URL(window.location.href)).protocol + "//" + (new URL(window.location.href)).host + "/forms/" + formId}</p>
 					<button className="ml-2 btn btn-square btn-primary" onClick={() => {
-						navigator.clipboard.writeText(`http://localhost:3000/forms/${formId}`);
+						navigator.clipboard.writeText((new URL(window.location.href)).protocol + "//" + (new URL(window.location.href)).host + `/forms/${formId}`);
 						toast.success("Copied to clipboard!");
 					}}><FiCopy /></button>
 				</div>

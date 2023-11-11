@@ -1,0 +1,27 @@
+{
+    "name": "formify-bot",
+    "version": "1.0.0",
+    "description": "",
+    "main": "app.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "start": "node app.js",
+        "dev": "nodemon app.js",
+        "prettier": "prettier --ignore-path .prettierignore --config prettier.config.js --write ."
+    },
+    "prettier": {
+        "tabWidth": 4,
+        "semi": true
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "dependencies": {
+        "dotenv": "^16.3.1",
+        "express": "^4.18.2",
+        "whatsappcloudapi_wrapper": "^1.0.13"
+    },
+    "devDependencies": {
+        "nodemon": "^3.0.1"
+    }
+}

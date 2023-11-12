@@ -1,16 +1,11 @@
 import express from "express";
-import WhatsappCloudAPI from "whatsappcloudapi_wrapper";
 import "dotenv/config";
-import handleEnglish from "../services/handleEnglish.js";
-import handleMalayalam from "../services/handleMalayalam.js";
+import bot from "../config.js";
+import handleCreate from "../services/handleCreate.js";
+import handleFill from "../services/handleFill.js";
 
 const router = express.Router();
 
-const bot = new WhatsappCloudAPI({
-    accessToken: process.env.Meta_WA_accessToken,
-    senderPhoneNumberId: process.env.Meta_WA_SenderPhoneNumberId,
-    WABA_ID: process.env.Meta_WA_wabaId,
-});
 
 router.get("/endpoint", (req, res) => {
     try {
@@ -53,38 +48,34 @@ router.post("/endpoint", async (req, res) => {
             // Choose language
             if (typeOfMsg === "textMessage") {
                 await bot.sendButtons({
-                    message: "Choose your language / ഭാഷ തിരഞ്ഞെടുക്കുക",
+                    message: "Welcome to Formify AI. Do you want to create a new form or fill one?",
                     recipientPhone: recipientPhone,
                     listOfButtons: [
                         {
-                            title: "English",
-                            id: "english",
+                            title: "Create new form",
+                            id: "create_form",
                         },
                         {
-                            title: "മലയാളം",
-                            id: "malayalam",
+                            title: "Fill a form",
+                            id: "fill_form",
                         },
                     ],
                 });
             }
 
-            let language;
+            let bot_choice;
 
             if (typeOfMsg === "replyButtonMessage") {
-                language = await incomingMessage.button_reply.id;
-                await bot.sendText({
-                    message: `Your language is ${incomingMessage.button_reply.title}`,
-                    recipientPhone: recipientPhone,
-                });
+                bot_choice = await incomingMessage.button_reply.id;
             }
 
             // mark as read
             await bot.markMessageAsRead({ message_id });
 
-            if (language === "malayalam") {
-                handleMalayalam(data);
+            if (bot_choice === "create_form") {
+                handleCreate(data);
             } else {
-                handleEnglish(data);
+                handleFill(data);
             }
         }
 
